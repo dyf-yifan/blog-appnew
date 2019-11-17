@@ -1,0 +1,39 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	outline: none;
+	border: none;
+	/* background-image: url(http://up.deskcity.org/pic/49/85/31/4985310b574461d305b975b29ae4047b.jpg); */
+/* 	background-size: calc(100%);
+ */	/* background-color: rgb(126,212,238); */
+}
+.container {
+	width: 99%;
+	margin: 0 auto;
+	height: 600px;
+/* 	background-image: url(http://up.deskcity.org/pic/49/85/31/4985310b574461d305b975b29ae4047b.jpg);
+	background-size: calc(100%);
+ */}
+a {
+	text-decoration: none;
+	color: #008B8B;
+}
+.avatar {
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+}
+/* h1,
+h2,
+h3,
+h4 {
+	color: rgba(52,38,215,0.8);
+	font-weight: 300;
+} */
+
+/* .main-color {
+	background-image: linear-gradient(to right, #bf30ac, #0f9d58 100%);
+	box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 7x 10px 0 rgba(0,0,0,0.12);
+	opacity: 0.7;
+} */

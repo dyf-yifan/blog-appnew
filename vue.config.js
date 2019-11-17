@@ -1,0 +1,9 @@
+module.exports = {
+	devServer: {
+		// 可以用域名访问
+		disableHostCheck: true,
+		//修改成你要的端口
+		port: 9090
+	},
+	lintOnSave: false
+}
