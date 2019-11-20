@@ -4,10 +4,11 @@
 *{
 	margin: 0;
 	padding: 0;
-	box-sizing: ;
+	box-sizing: border-box;
 }
 a {
 	text-decoration: none;
+	color: rgb(215, 204, 200);
 }
 u {
 	list-style: none;
