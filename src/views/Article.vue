@@ -60,7 +60,6 @@ export default {
 	display: flex;
 	width: 100%;
 	margin-top: 15px;
-	/* height: 2023px; */
 }
 .d-left {
 	width: 22%;
@@ -68,7 +67,6 @@ export default {
 }
 .d-right {
 	width: 78%;
-	/* border: 1px solid green; */
 	display: flex;
 	flex-wrap: wrap;
 }
@@ -84,7 +82,6 @@ export default {
 	align-items: flex-end;
 	flex: 0 0 50%;
 	height: 180px;
-	/* border: 1px solid red; */
 }
 .a-cover {
 	width: 30%;
@@ -99,12 +96,9 @@ export default {
 	width:70%;
 	height: 180px;
 	border: 1px gold;
-	/* background-color: #42B983; */
-	
 }
 .a-top {
 	height: 50px;
-	/* background-color: #FF0000; */
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -118,7 +112,6 @@ export default {
 .a-tro {
 	width: 100%;
 	height: 80px;
-	/* background-color: #B4B4B4; */
 }
 .a-bott {
 	width: 100%;

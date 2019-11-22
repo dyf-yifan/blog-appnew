@@ -1,35 +1,25 @@
 <template>
 	<div>
-			<router-view class="main" />
-			
-			
-		<div class="d-article-card" v-for="(user,index) in users" :key="index">
-			
-			
+			<div class="u-user">
+		<div class="u-card" v-for="(user,index) in users" :key="index">
 			<div class="d-pic">
 				<img :src="user.avatar" class="pic">
 			</div>
-			
-			
-			<div class="d-con">
-				
-				
-			<h2>{{user.nickname}}</h2>
-				<div class="d-nickname">
+			<div class="u-con">
+				<div class="u-nickname">
 			 	        <h3>{{user.nickname}}</h3>
 				</div>
-				<div class="d-content">
-					    <h4>{{user.introduction.substring(0,60)}}</h4>
+				<div class="u-content">
+					    <h4>{{user.introduction}}</h4>
 				</div>
-				<div class="small">
+				<div class="u-small">
 				         <p><i class="iconfont">&#xe616;</i>{{user.address}}</p>
 				         <p><i class="iconfont">&#xe63f;</i>{{user.create_time}}</p>
 				</div>	
 			</div>		
 		</div>
 		
-		
-		</router-view>
+		</div>
 	</div>
 </template>
 
@@ -61,29 +51,58 @@
 </script>
 
 <style scoped>
-	.main {
-	  width: 100%;
-	  margin: 0 auto;
-	  border: 1px solid #eee;
-	  background:url(http://up.deskcity.org/pic/49/85/31/4985310b574461d305b975b29ae4047b.jpg);
-	  background-size: calc(100%);
-	  background-attachment:fixed;
-	  position: relative;
-	}
-	.d-article-card {
+	.u-user {
+		width: 100%;
+		margin: 0 auto;
+		border: 1px solid cornflowerblue;
 		display: flex;
-		flex: 0 0 50%;
-		width: 52%;
-		padding-left: 60px;
-		padding-top: 20px;
-		
-/* 		position: absolute;
- */		left: 0;
-		top: 0;
-		bottom: 0;
-		height: auto;
-		/* line-height: 50px; */
-		background: rgba(255,255,255,0.7);
+		flex-wrap: wrap;
+	}
+	.u-card {
+		flex: 0 0 30%;
+		height: 300px;
+		border: 1px solid #B4B4B4;
+		margin-top: 80px;
+		margin-left: 29px;
+		border-radius: 30px;
+	}
+	.d-pic {
+		width: 100%;
+		height: 40px;
+		text-align: center;
+		margin-top: -50px;
+	}	
+	.pic {
+		width: 100px;
+		height: 100px;
+		border-radius: 50px;
+	}
+	.u-con {
+		width: 100%;
+		height: 80%;
+		margin-top: 70px;
+	}
+	.u-nickname {
+		height: 50px;
+		/* background-color: #6495ED; */
+		text-align: center;
+		font-size: 23px;
+		padding-top: 5px;
+	}
+	.u-content {
+		margin-top: 10px;
+		height: 60px;
+		text-align: center;
+		letter-spacing: 5px;
+		font-size: 20px;
+	}
+	.u-small {
+		margin-top: 25px;
+		height: 70px;
+		padding-left: 9px;
+	}
+	p {
+		padding-top: 5px;
 	}
 	@font-face {
 	  font-family: 'iconfont';  /* project id 1473594 */
@@ -101,44 +120,4 @@
 	    -webkit-text-stroke-width: 0.2px;
 	    -moz-osx-font-smoothing: grayscale;
 		}
-	.d-pic {
-		width: 15%;
-		justify-content: flex-end;
-	}
-	.pic {
-		width: 100px;
-		height: 100px;
-		border-radius: 50%;
-	}
-	.d-con {
-		margin-left: 10px;
-	}
-	.d-nickname {
-		padding-top: 10px;
-		display: flex;
-	}
-	.d-content {
-		padding-top: 10px;
-	}
-	.small {
-		padding-top: 9px;
-		display: flex;
-		justify-content: space-around;
-	}
-	h2 {
-		margin-top: 10px;
-		color: rgb(54,58,54);
-		font-weight: 400;
-		font-size: 29px;
-	}
-	h3 {
-		color: rgb(54,58,54);
-		font-size: 20px;
-		font-weight: 300;
-	}
-	h4 {
-		color: rgb(54,58,54);
-		font-size: 25px;
-		font-weight: 280;
-	}
-</style>
+	</style>
