@@ -20,7 +20,7 @@
 			<div class="top">
 				
 			</div>
-			<div class="bottom">
+			<div class="c-bottom">
 				<div class="box"></div>
 				<div class="box"></div>
 				<div class="box"></div>
@@ -28,10 +28,6 @@
 			
 		</div>
 		
-		<div class="c-bottom">
-				
-		</div>
-			
 		<div class="c-right">
 			
 		</div>
@@ -79,12 +75,12 @@ export default {
 	background-color: #008B8B;
 }
 .top{
-	height: 70%;
+	height: 65%;
 	border: 1px solid red;
 }
-.bottom{
+.c-bottom{
 	display: flex;	
-	height: 30%;
+	height: 35%;
 	
 	
 }
@@ -92,6 +88,12 @@ export default {
 	border: 1px solid #FFFF00;
 	flex: 1 1 33.3%;
 	height: 100%;
+}
+.c-right {
+	width: 18%;
+	height: 273px;
+	/* border: 2px solid #BF30AC; */
+	background-color: #42B983;
 }
 @font-face {
 	font-family: 'iconfont'; /* project id 1473594 */

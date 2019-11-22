@@ -105,8 +105,8 @@ ul {
 
 li {
 	margin-right: 15px;
-	margin-left: 53px;
-	font-size: 15px;
+	margin-left: 42px;
+	font-size: 13px;
 	white-space: nowrap;
 }
 .d-top-nav {
@@ -129,6 +129,8 @@ li {
 }
 .d-bottom-nav a {
 	color: rgb(250, 250, 250);
+	font-size: 20px;
+	font-weight: 300;
 }
 .d-bottom-box li {
 	font-size: 20px;
@@ -143,7 +145,7 @@ li {
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
-	height: 85px;
+	height: 66px;
 	background-color: rgb(255, 255, 255);
 	text-align: center;
 }
@@ -153,7 +155,7 @@ li {
 	justify-content: space-around; 
 	align-items: center;
 	width: 100%;
-	height: 49px;
+	height: 43px;
 	background-color: rgb(69, 90, 100);
 	font-size: 20px;
 }
@@ -169,35 +171,35 @@ li {
 	letter-spacing: 8px;
 }
 .brand {
-	margin-left: 19px;
-	
+	margin-left: 16px;
+	font-size: 15px;
 }
 h1 {
 	font-weight: 400;
 	font-size: 29px;
 }
 .search {
-	width: 400px;
-	height: 45px;
+	width: 350px;
+	height: 38px;
 	margin-right: 160px;
 	border: 1px solid #dddddd;
 	display: flex;
 }
 input {
 	width: 95%;
-	font-size: 18px;
+	font-size: 15px;
 }
 button {
-	width: 15%;
+	width: 13%;
 	background-color: rgba(191, 44, 36, 0.9);
 }
 .book-mobel {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	font-size: 21px;
-	width: 150px;
-	height: 42px;
+	font-size: 18px;
+	width: 130px;
+	height: 40px;
 	border: 1px solid #DDDDDD;
 }
 @font-face {
@@ -218,7 +220,7 @@ button {
 	font-size: 30px;
 }
 .i-you {
-	font-size: 24px;
+	font-size: 19px;
 }
 
 .main {
