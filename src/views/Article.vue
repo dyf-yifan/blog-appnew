@@ -1,170 +1,143 @@
 <template>
 	<div>
-			<router-view class="main" />
-			
-			
-		<div class="d-article-card" v-for="(article,index) in articles" :key="index">
-			
-			
-			<div class="d-pic">
-				<img :src="article.cover" class="pic">
-			</div>
-			
-			
-			<div class="d-con">
-				
-				
-			<h2>{{article.title}}</h2>
-				<div class="d-nickname">
-			 	        <h3>{{article.nickname}}</h3>
+		<div class="mainn">
+			<div class="d-left"></div>
+			<div class="d-right">
+				<div class="a-title"></div>
+				<div class="a-card" v-for="(article, index) in articles" :key="index">
+					<div class="a-cover">
+						<img :src="article.cover" alt="图书封面" class="cover" />
+						</div>
+				<div class="a-right">
+				<div class="a-top">
+						<h3>{{article.title}}</h3>
+						</div>
+						<div class="a-zhong">
+							<p><i class="iconfont i-find">&#xe85d;</i>{{article.nickname}}</p>
+							<p><i class="iconfont i-find">&#xe607;</i>{{article.likes}}</p>
+							<p><i class="iconfont i-find">&#xe63e;</i>{{article.unlikes}}</p>
+						</div>
+						<div class="a-tro">
+							<p>{{article.content.substring(0,36)}}</p>
+						</div>
+						<div class="a-bott">
+							<p><i class="iconfont i-find">&#xe63f;</i>{{article.publish_time}}</p>
+							
+						</div>
 				</div>
-				<div class="d-content">
-					    <h4>{{article.content.substring(0,60)}}</h4>
 				</div>
-				<div class="small">
-				         <p><i class="iconfont">&#xe607;</i>{{article.likes}}</p>
-				         <p><i class="iconfont">&#xe60b;</i>{{article.unlikes}}</p>
-			             <p><i class="iconfont">&#xe600;</i>{{article.comments}}</p>
-				         <p><i class="iconfont">&#xe63f;</i>{{article.publish_time}}</p>
-				</div>	
 			</div>		
 		</div>
-		
-		
-		</router-view>
+		<router-view />
 	</div>
 </template>
-
 <script>
-	export default {
-		data(){
-			return {
-				articles: []
+export default {
+	data() {
+		return {
+			articles: []
+		};
+	},
+	created() {
+		this.axios.get('http://localhost:8080/api/article').then(res => {
+			console.log(res.data.data);
+			this.articles = res.data.data;
+			for (var i = 0; i < this.articles.length; i++) {
+				this.articles[i].cover = this.getImage(this.articles[i].cover);
 			}
-		},
-		created(){
-			this.axios.get('http://localhost:8080/api/article').then(res => {
-				console.log(res.data.data);
-				this.articles = res.data.data;
-				for (var i = 0; i < this.articles.length; i++) {
-					this.articles[i].cover = this.getImage(this.articles[i].cover);
-				}
-			});
-		},
-		methods:{
-			getImage(url) {
-						return 'https://images.weserv.nl/?url=' + url;
-			}
-		},
-		computed:{
-			
+		});
+	},
+	methods: {
+		getImage(url) {
+			return 'https://images.weserv.nl/?url=' + url;
 		}
-	}
+	},
+	computed: {}
+};
 </script>
-
 <style scoped>
-	.main {
-	  width: 100%;
-	  margin: 0 auto;
-	  border: 1px solid #eee;
-	  /**filter:alpha(opacity=50);
-	  -moz-opacity:0.5;  
-	  -khtml-opacity: 0.5;  
-	  opacity: 0.5;
-	  position:absolute; 
-	  background:url(http://up.deskcity.org/pic/49/85/31/4985310b574461d305b975b29ae4047b.jpg) ;
-	  background-size: calc(100%);
-	  background-attachment:fixed;**/
-	  background:url(http://up.deskcity.org/pic/49/85/31/4985310b574461d305b975b29ae4047b.jpg);
-	  background-size: calc(100%);
-	  background-attachment:fixed;
-	  position: relative;
-	}
-	/* .d-picd {
-		background:url(http://up.deskcity.org/pic/49/85/31/4985310b574461d305b975b29ae4047b.jpg) no-repeat;
-		background-size: cover;
-		width: 500px;
-		height: 300px;
-		position: relative;
-	}
-	.pice {
-		position: absolute;
-		left: 0;
-		top: 0;
-		bottom: 0;
-		width: 500px;
-		height: 300px;
-		line-height: 50px;
-		background: rgba(255,255,255,0.3);
-	} */
-	.d-article-card {
-		display: flex;
-		flex: 0 0 50%;
-		width: 65%;
-		padding-left: 60px;
-		padding-top: 20px;
-		
-/* 		position: absolute;
- */		left: 0;
-		top: 0;
-		bottom: 0;
-		height: auto;
-		/* line-height: 50px; */
-		background: rgba(255,255,255,0.7);
-	}
-	@font-face {
-	  font-family: 'iconfont';  /* project id 1473594 */
-	  src: url('//at.alicdn.com/t/font_1473594_nbi1e2h42.eot');
-	  src: url('//at.alicdn.com/t/font_1473594_nbi1e2h42.eot?#iefix') format('embedded-opentype'),
-	  url('//at.alicdn.com/t/font_1473594_nbi1e2h42.woff2') format('woff2'),
-	  url('//at.alicdn.com/t/font_1473594_nbi1e2h42.woff') format('woff'),
-	  url('//at.alicdn.com/t/font_1473594_nbi1e2h42.ttf') format('truetype'),
-	  url('//at.alicdn.com/t/font_1473594_nbi1e2h42.svg#iconfont') format('svg');
-	}
-	.iconfont{
-	    font-family:"iconfont" !important;
-	    font-size:23px;font-style:normal;
-	    -webkit-font-smoothing: antialiased;
-	    -webkit-text-stroke-width: 0.2px;
-	    -moz-osx-font-smoothing: grayscale;
-		}
-	.d-pic {
-		width: 20%;
-	}
-	.pic {
-		width: 180px;
-		height: 240px;
-		border-radius: 10px;
-	}
-	.d-con {
-		margin-left: 25px;
-	}
-	.d-nickname {
-		padding-top: 10px;
-		display: flex;
-	}
-	.d-content {
-		padding-top: 10px;
-	}
-	.small {
-		padding-top: 9px;
-		display: flex;
-		justify-content: space-around;
-	}
-	h2 {
-		margin-top: 10px;
-		color: rgb(54,58,54);
-		font-weight: 400;
-		font-size: 29px;
-	}
-	h3 {
-		color: rgb(54,58,54);
-		font-size: 20px;
-		font-weight: 300;
-	}
-	h4 {
-		color: rgb(54,58,54);
-		font-size: 25px;
-		font-weight: 280;
-	}
+.mainn {
+	display: flex;
+	width: 100%;
+	margin-top: 15px;
+	/* border: 1px solid #ff0000; */
+	/* height: 2023px; */
+}
+.d-left {
+	width: 22%;
+	border: 1px solid brown;
+}
+.d-right {
+	width: 78%;
+	/* border: 1px solid green; */
+	display: flex;
+	flex-wrap: wrap;
+}
+.a-title {
+	width: 100%;
+	height: 40px;
+	border: 1px solid grey;
+}
+.a-card {
+	margin-top: 40px;
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
+	flex: 0 0 50%;
+	height: 180px;
+	/* border: 1px solid red; */
+}
+.a-cover {
+	width: 30%;
+	height: 100%;
+}
+.cover {
+	width: 90%;
+	height: 100%;	
+}
+.a-right {
+	
+	width:70%;
+	height: 180px;
+	border: 1px gold;
+	/* background-color: #42B983; */
+	
+}
+.a-top {
+	height: 50px;
+	/* background-color: #FF0000; */
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.a-zhong {
+	display: flex;
+	justify-content: space-around;
+	width: 100%;
+	height: 25px;
+}
+.a-tro {
+	width: 100%;
+	height: 80px;
+	/* background-color: #B4B4B4; */
+}
+.a-bott {
+	width: 100%;
+	height: 25px;
+}
+@font-face {
+  font-family: 'iconfont';  /* project id 1473594 */
+  src: url('//at.alicdn.com/t/font_1473594_gri4tyzjf5w.eot');
+  src: url('//at.alicdn.com/t/font_1473594_gri4tyzjf5w.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_1473594_gri4tyzjf5w.woff2') format('woff2'),
+  url('//at.alicdn.com/t/font_1473594_gri4tyzjf5w.woff') format('woff'),
+  url('//at.alicdn.com/t/font_1473594_gri4tyzjf5w.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_1473594_gri4tyzjf5w.svg#iconfont') format('svg');
+}
+.iconfont{
+    font-family:"iconfont" !important;
+    font-size:16px;font-style:normal;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.2px;
+    -moz-osx-font-smoothing: grayscale;}
 </style>

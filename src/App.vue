@@ -26,7 +26,6 @@
 	}
 </script>
 <style>
-@import url("assets/css/main.css");
 @import url("assets/css/style.css");
 @import url("assets/css/basicstyle.css");
 </style>

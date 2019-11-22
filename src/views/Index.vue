@@ -49,17 +49,15 @@ export default {
 
 <style scoped>
 .main {
-	/* background-color: #42b983; */
 	/* text-align: center; */
 	margin: 0 auto;
-	
 	/* display: flex; */
 }
 .c-left {
+	margin-top: 7px;
 	display: flex;
 	width: 20%;
 	height: 420px;
-	background-color: #b4b4b4;
 	flex-wrap: wrap;
 }
 
@@ -71,8 +69,8 @@ export default {
 
 
 .d-carousel{
+	margin-top: 7px;
 	width: 62%;
-	background-color: #008B8B;
 }
 .top{
 	height: 65%;
@@ -81,8 +79,6 @@ export default {
 .c-bottom{
 	display: flex;	
 	height: 35%;
-	
-	
 }
 .box{
 	border: 1px solid #FFFF00;
@@ -90,10 +86,10 @@ export default {
 	height: 100%;
 }
 .c-right {
+	margin-top: 7px;
 	width: 18%;
 	height: 273px;
-	/* border: 2px solid #BF30AC; */
-	background-color: #42B983;
+	border: 1px solid #BF30AC;
 }
 @font-face {
 	font-family: 'iconfont'; /* project id 1473594 */
