@@ -42,7 +42,7 @@
 					<li class="navli"><router-link to="/article">全部作品</router-link></li>
 					<li class="navli"><router-link to="/collection">排行</router-link></li>
 					<li class="navli"><router-link to="/user">完本</router-link></li>
-					<li class="navli"><router-link to="/user">免费</router-link></li>
+					<li class="navli"><router-link to="/collection">专题</router-link></li>
 					<li class="navli"><router-link to="/user">作家专区</router-link></li>
 					<li class="navli"><router-link to="/user">
 					<i class="iconfont i-ipone">&#xe659;</i>客户端</router-link></li>
@@ -190,8 +190,8 @@ input {
 	font-size: 15px;
 }
 button {
-	width: 13%;
-	background-color: rgba(191, 44, 36, 0.9);
+	width: 15%;
+	height: 100%;
 }
 .book-mobel {
 	display: flex;
@@ -217,7 +217,8 @@ button {
 	-moz-osx-font-smoothing: grayscale;
 }
 .i-find{
-	font-size: 30px;
+	font-size: 31px;
+	color: rgb(0,105,92);
 }
 .i-you {
 	font-size: 19px;

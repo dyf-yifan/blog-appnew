@@ -60,7 +60,6 @@ export default {
 	display: flex;
 	width: 100%;
 	margin-top: 15px;
-	/* border: 1px solid #ff0000; */
 	/* height: 2023px; */
 }
 .d-left {
