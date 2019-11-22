@@ -43,7 +43,6 @@
 			}
 		},
 		created(){
-			alert("article")
 			this.axios.get('http://localhost:8080/api/article').then(res => {
 				console.log(res.data.data);
 				this.articles = res.data.data;

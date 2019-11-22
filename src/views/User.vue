@@ -41,7 +41,6 @@
 			}
 		},
 		created(){
-			alert("users")
 			this.axios.get('http://localhost:8080/api/user').then(res => {
 				console.log(res.data.data);
 				this.users = res.data.data;

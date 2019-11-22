@@ -17,7 +17,7 @@
 						</li>
 						<li class="nav-li" v-if="this.user" @click="logout" id="logout">退出</li>
 					</div>
-					<li>|</li>
+					<!-- <li>|</li> -->
 					<div class="top-right">
 						<li class="nav-li" v-if="!this.user"><router-link to="/">注册</router-link></li>
 					</div>
@@ -36,10 +36,10 @@
 			</div>
 		</div>
 		<div class="d-bottom-nav">
-			<h1 class="brand"><router-link to="/">作品分类</router-link></h1>
+			<h1 class="brand"><router-link to="/" class="brand-a">作品分类</router-link></h1>
 			<div class="d-bottom-box">
 				<ul class="nav-ul">
-					<li class="navli"><router-link to="/">全部作品</router-link></li>
+					<li class="navli"><router-link to="/article">全部作品</router-link></li>
 					<li class="navli"><router-link to="/collection">排行</router-link></li>
 					<li class="navli"><router-link to="/user">完本</router-link></li>
 					<li class="navli"><router-link to="/user">免费</router-link></li>
@@ -106,7 +106,8 @@ ul {
 li {
 	margin-right: 15px;
 	margin-left: 53px;
-	font-size: 18px;
+	font-size: 15px;
+	white-space: nowrap;
 }
 .d-top-nav {
 	width: 100%;
@@ -149,7 +150,7 @@ li {
 
 .d-bottom-nav {
 	display: flex;
-	justify-content: space-around;
+	justify-content: space-around; 
 	align-items: center;
 	width: 100%;
 	height: 49px;
@@ -162,11 +163,18 @@ li {
 	margin-left: 450px;
 }
 .symbol {
-	margin-right: 150px;
+	margin-right: 155px;
+}
+.brand-a {
+	letter-spacing: 8px;
+}
+.brand {
+	margin-left: 19px;
+	
 }
 h1 {
 	font-weight: 400;
-	font-size: 30px;
+	font-size: 29px;
 }
 .search {
 	width: 400px;
@@ -215,8 +223,9 @@ button {
 
 .main {
 	width: 90%;
-	margin: 0 auto;
+	/* margin: 0 auto; */
 	border: 1px solid #eee;
+	display: flex;
 }
 #logout {
 	color: yellow;

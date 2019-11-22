@@ -30,7 +30,8 @@ u {
 }
 .d-col-6 {
 	flex: 1 1 50%;
-}
+	background-color: #BF30AC;
+} 
 .d-col-4 {
 	flex: 1 1 33.3%;
 }
