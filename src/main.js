@@ -4,9 +4,13 @@ import router from './router'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 // import VuejsDialog from 'vuejs-dialog'
-Vue.use(VueAxios,axios)
-// Vue.use(VuejsDialog)
 
+// Vue.use(VuejsDialog)
+//引用全局数据文件
+import global_ from '@/util/Global'
+Vue.prototype.GLOBAL = global_
+
+Vue.use(VueAxios,axios)
 Vue.config.productionTip = false
 
 new Vue({

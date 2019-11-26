@@ -4,24 +4,24 @@
 			<div class="d-left"></div>
 			<div class="d-right">
 				<div class="a-title"></div>
-				<div class="a-card" v-for="(article, index) in articles" :key="index">
+				<div class="a-card" v-for="(item, index) in articles" :key="index">
 					<div class="a-cover">
-						<img :src="article.cover" alt="图书封面" class="cover" />
+						<img :src="article.cover" alt="" class="cover" />
 						</div>
 				<div class="a-right">
 				<div class="a-top">
 						<h3>{{article.title}}</h3>
 						</div>
 						<div class="a-zhong">
-							<p><i class="iconfont i-find">&#xe85d;</i>{{article.nickname}}</p>
-							<p><i class="iconfont i-find">&#xe607;</i>{{article.likes}}</p>
-							<p><i class="iconfont i-find">&#xe63e;</i>{{article.unlikes}}</p>
+							<p><i class="iconfont i-find">&#xe85d;</i>{{item.article.nickname}}</p>
+							<p><i class="iconfont i-find">&#xe607;</i>{{item.article.likes}}</p>
+							<p><i class="iconfont i-find">&#xe63e;</i>{{item.article.unlikes}}</p>
 						</div>
 						<div class="a-tro">
-							<p>{{article.content.substring(0,36)}}</p>
+							<p>{{article.content.substring(0,50)}}</p>
 						</div>
 						<div class="a-bott">
-							<p><i class="iconfont i-find">&#xe63f;</i>{{article.publish_time}}</p>
+							<p><i class="iconfont i-find">&#xe63f;</i>{{item.article.publish_time}}</p>
 							
 						</div>
 				</div>
@@ -35,19 +35,49 @@
 export default {
 	data() {
 		return {
-			articles: []
+			articles: [],
+			currentPage :1,
+			count: 2
 		};
 	},
 	created() {
-		this.axios.get('http://localhost:8080/api/article').then(res => {
-			console.log(res.data.data);
-			this.articles = res.data.data;
-			for (var i = 0; i < this.articles.length; i++) {
-				this.articles[i].cover = this.getImage(this.articles[i].cover);
+		// this.axios.get(this.GLOBAL.baseUrl +'/article').then(res => {
+		// 	console.log(res.data.data);
+		// 	this.articles = res.data.data;
+		// 	for (var i = 0; i < this.articles.length; i++) {
+		// 		this.articles[i].cover = this.getImage(this.articles[i].cover);
+		// 	}
+		// });
+		this.axios.get(this.GLOBAL.baseUrl + '/article' ,{
+			params: {
+				page: this.currentPage,
+				count: this.count
 			}
+		})
+		.then(res => {
+			console.log(res.data.data.length);
+			this.articles = res.data.data;
 		});
 	},
 	methods: {
+		loadMore(){
+			this.currentPage = this.currentPage + 1;
+			this.axios.get(this.GLOBAL.baseUrl +'/article', {
+				params: {
+					page: this.currentPage,
+					count: this.count
+				}
+			})
+			.then(res => {
+				console.log(res.data.data.length);
+				let temp = [];
+				temp = res.data.data;
+				for (var i = 0; i < temp.length; i++) {
+					this.articles.splice(this.currentPage * this.count, 0, temp[i]);
+				}
+				console.log(this.articles.length);
+			});
+		},
 		getImage(url) {
 			return 'https://images.weserv.nl/?url=' + url;
 		}
@@ -92,7 +122,6 @@ export default {
 	height: 100%;	
 }
 .a-right {
-	
 	width:70%;
 	height: 180px;
 	border: 1px gold;

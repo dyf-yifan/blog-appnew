@@ -66,8 +66,10 @@ export default {
 		   // registShow: false,
 			userDto: {
 				mobile: '',
-				password: ''
-			}
+				password: '',
+				code: ''
+			},
+			token: ''
 		};
 	},
 	methods: {

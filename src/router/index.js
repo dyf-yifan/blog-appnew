@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-
 import Nav from '@/views/Nav.vue'
 import Index from '@/views/Index.vue'
 import Article from '@/views/Article.vue'
@@ -36,17 +35,31 @@ const routes = [
 				},
 				{
 					path: 'article',
-					component: Article
+					component: Article,
+					children: [
+						{
+							path:'articledetail',
+							component: ArticleDetail
+						}
+					]
 				},
 				{
 					path: 'collection',
 					component: Collection
 				},
 				{
+					path:'theme/:id',
+					component:CollectionDetail
+				},
+				{
 					path: 'user',
 					component: User
-				},																																																																																																									
+				},
 				{
+					path: 'user/:id',
+					component:UserDetail
+				},
+				{ 
 					path: 'profile',
 					component: Profile,
 					children: [

@@ -27,19 +27,55 @@
 	export default {
 		data(){
 			return {
-				users: []
+				users: [],
+				currentPage: 1,
+				count: 2
 			}
 		},
 		created(){
-			this.axios.get('http://localhost:8080/api/user').then(res => {
-				console.log(res.data.data);
-				this.users = res.data.data;
-				for (var i = 0; i < this.users.length; i++) {
-					this.users[i].avatar = this.getImage(this.users[i].avatar);
-				}
-			});
+			// this.axios.get('http://localhost:8080/api/user').then(res => {
+			// 	console.log(res.data.data);
+			// 	this.users = res.data.data;
+			// 	for (var i = 0; i < this.users.length; i++) {
+			// 		this.users[i].avatar = this.getImage(this.users[i].avatar);
+			// 	}
+			// });
+			this.axios.get(this.GLOBAL.baseUrl + '/user', {
+							params: {
+								page: this.currentPage,
+								count: this.count
+							}
+						})
+						.then(res => {
+							console.log(res.data.data.length);
+							this.users = res.data.data;
+							for (var i = 0; i < this.users.length; i++) {
+								this.users[i].avatar = this.getImage(this.users[i].avatar);
+							}
+						});
 		},
 		methods:{
+			loadMore() {
+						this.currentPage = this.currentPage + 1;
+						this.axios.get(this.GLOBAL.baseUrl + '/user', {
+								params: {
+									page: this.currentPage,
+									count: this.count
+								}
+							})
+							.then(res => {
+								console.log(res.data.data.length);
+								let temp = [];
+								temp = res.data.data;
+								for (var i = 0; i < temp.length; i++) {
+									this.users.splice(this.currentPage * this.count, 0, temp[i]);
+								}
+								console.log(this.users.length);
+							});
+					},
+			go(page) {
+						window.location.href = page;
+					},
 			getImage(url) {
 						return 'https://images.weserv.nl/?url=' + url;
 			}

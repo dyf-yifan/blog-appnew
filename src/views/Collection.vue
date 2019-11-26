@@ -8,21 +8,27 @@
 			</div>
 			<div class="d-con">	
 				<div class="d-nickname">
-			 	        <h3>{{theme.thname}}</h3>
+					<router-link :to="{ path: '/theme/' + theme.id }"><h3>{{theme.thName}}</h3></router-link>
+			 	        
 				</div>
 				<div class="d-content">
 					    <h4>{{theme.look.substring(0,80)}}</h4>
 				</div>
 				<div class="small">
 				         <p><i class="iconfont">&#xe626;</i>{{theme.attention}}</p>
-				         <p><i class="iconfont">&#xe63f;</i>{{theme.thtime}}</p>
+				         <p><i class="iconfont">&#xe63f;</i>{{theme.thTime}}</p>
 						 <p><i class="iconfont">&#xe620;</i>{{theme.production}}</p>			 
 				</div>	
 			</div>		
 		</div>
 		</div>
 		<div class="coll-right">
+			<!-- <div><a :href="theme.homepage" class="link" @click="go(theme.homepage)">专题主页</a></div> -->
 			
+			
+		</div>
+		<div class="page">
+			<button @click="loadMore">点击加载更多</button>
 		</div>
 		
 		</div>
@@ -32,24 +38,57 @@
 <script>
 	export default {
 		data(){
-			return {
-				themes: []
-			}
+				return {
+					themes: [],
+					currentPage: 1,
+					count: 2
+				};
 		},
 		created(){
-			this.axios.get('http://localhost:8080/api/theme').then(res => {
-				console.log(res.data.data);
-				this.themes = res.data.data;
-				for (var i = 0; i < this.themes.length; i++) {
-					this.themes[i].pic = this.getImage(this.themes[i].pic);
-				}
-			});
+			// this.axios.get('http://localhost:8080/api/theme').then(res => {
+			// 	console.log(res.data.data);
+			// 	this.themes = res.data.data;
+			// 	for (var i = 0; i < this.themes.length; i++) {
+			// 		this.themes[i].pic = this.getImage(this.themes[i].pic);
+			// 	}
+			// });
+			this.axios.get(this.GLOBAL.baseUrl + '/theme', {
+					params: {
+						page: this.currentPage,
+						count: this.count
+					}
+				})
+				.then(res => {
+					console.log(res.data.data.length);
+					this.themes = res.data.data;
+				});
 		},
 		methods:{
-			getImage(url) {
+		loadMore() {
+			this.currentPage = this.currentPage + 1;
+			this.axios.get(this.GLOBAL.baseUrl + '/theme', {
+					params: {
+						page: this.currentPage,
+						count: this.count
+					}
+				})
+				.then(res => {
+					console.log(res.data.data.length);
+					let temp = [];
+					temp = res.data.data;
+					for (var i = 0; i < temp.length; i++) {
+						this.themes.splice(this.currentPage * this.count, 0, temp[i]);
+					}
+					console.log(this.themes.length);
+				});
+		},
+		getImage(url) {
 						return 'https://images.weserv.nl/?url=' + url;
 			}
 		},
+		// go(page) {
+		// 	window.location.href = page;
+		// },
 		computed:{
 			
 		}
@@ -69,6 +108,7 @@
 	.coll-right {
 		width: 20%;
 		border: 1px solid royalblue;
+		background-color: #6495ED;
 	}
 	.coll-card {
 		margin-top: 15px;
@@ -109,6 +149,16 @@
 		height: 80px;
 		font-size: 18px;
 		letter-spacing: 1px;
+	}
+	.page {
+		text-align: center;
+	}
+	button {
+		width: 130px;
+		height: 50px;
+		text-align: center;
+		background-color: rgb(255,250,232);
+		border-radius: 20px;
 	}
 	@font-face {
 	  font-family: 'iconfont';  /* project id 1473594 */
